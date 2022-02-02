@@ -4,14 +4,15 @@ interface StringMap {
   [key: string]: string;
 }
 
-export default async function sheet<T>(sheetId = ''): Promise<T[] | []> {
+export default async function sheet<T>(sheetId = '', apiKey = ''): Promise<T[] | []> {
   if (!sheetId) throw new Error('Need a Google sheet id to load');
+  if (!apiKey) throw new Error('Need a Google api key');
   else
     try {
       return (
         (await (
           await axios.get(
-            `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}?includeGridData=true&key={$apiKey}`
+            `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}?includeGridData=true&key=${apiKey}`
           )
         ).data?.feed?.entry) || []
       ).map((row: StringMap[]) =>
