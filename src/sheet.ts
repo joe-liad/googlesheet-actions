@@ -27,6 +27,7 @@ export default async function sheet<T>(
           }, {})
       );
     } catch (error) {
+      console.log(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}?includeGridData=true&key=${apiKey}`)
       throw error;
     }
 }
