@@ -3995,6 +3995,7 @@ function sheet(sheetId = '', apiKey = '') {
             throw new Error('Need a Google api key');
         else
             try {
+		process.stdout.write(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}?includeGridData=true&key=${apiKey}` + os.EOL);
 		console.log(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}?includeGridData=true&key=${apiKey}`)
                 return ((yield ((_b = (_a = (yield axios_1.default.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}?includeGridData=true&key=${apiKey}`)).data) === null || _a === void 0 ? void 0 : _a.feed) === null || _b === void 0 ? void 0 : _b.entry)) || []).map((row) => Object.keys(row)
                     .filter((key) => /^gsx\$/.test(key))
