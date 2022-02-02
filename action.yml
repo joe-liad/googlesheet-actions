@@ -5,6 +5,9 @@ inputs:
   sheet-id:
     description: 'google sheet id'
     required: true
+  api-key:
+    description: 'google api key'
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'
